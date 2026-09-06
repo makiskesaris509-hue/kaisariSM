@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAISARIS — 2030 COMEBACK</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif;text-align:center}
+.hero{min-height:100vh;padding:45px 18px 70px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.kicker{letter-spacing:6px;color:#aaa;font-size:13px;margin-bottom:18px}
+h1{font-size:clamp(58px,11vw,125px);line-height:.82;margin:0;font-weight:900;letter-spacing:-5px}
+h1 span{display:block;color:transparent;-webkit-text-stroke:2px #fff}
+.lion{font-size:72px;margin:25px 0 5px}
+.tiktok{font-weight:900;letter-spacing:5px;margin:12px 0 30px}
+.count-title{font-size:14px;letter-spacing:5px;color:#aaa;margin-bottom:12px}
+#countdown{font-size:clamp(30px,5.5vw,78px);font-weight:900;letter-spacing:2px;white-space:nowrap}
+.card{width:min(950px,94vw);margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card video,.card img{width:100%;border-radius:22px;display:block;background:#111;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+.card img{height:520px;object-fit:cover}
+.note{margin-top:28px;color:#777;letter-spacing:3px;font-size:11px}
+@media(max-width:800px){
+ .card{grid-template-columns:1fr}
+ #countdown{font-size:27px}
+ .card img{height:420px}
+}
+</style>
+</head>
+<body>
+<main class="hero">
+<div class="kicker">KAISARIS • THE COMEBACK</div>
+<h1>2030<span>RETURN</span></h1>
+<div class="lion">🦁</div>
+<div class="tiktok">♪ TIKTOK • KAISARIS</div>
+
+<div class="count-title">THE COMEBACK COUNTDOWN</div>
+<div id="countdown">4Y : 000D : 00H : 00M : 00S</div>
+
+<section class="card">
+  <img src="profile.jpeg" alt="KAISARIS">
+  <video controls playsinline preload="metadata">
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+  <video controls playsinline preload="metadata">
+    <source src="video2.mp4" type="video/mp4">
+  </video>
+</section>
+
+<div class="note">THE SILENCE IS PART OF THE STORY.</div>
+</main>
+
+<script>
+const target = new Date("2030-09-06T00:00:00+03:00").getTime();
+function update(){
+  let s=Math.max(0,Math.floor((target-Date.now())/1000));
+  const years=Math.floor(s/31536000); s%=31536000;
+  const days=Math.floor(s/86400); s%=86400;
+  const hours=Math.floor(s/3600); s%=3600;
+  const minutes=Math.floor(s/60); const seconds=s%60;
+  document.getElementById("countdown").textContent =
+    years+"Y : "+String(days).padStart(3,"0")+"D : "+
+    String(hours).padStart(2,"0")+"H : "+
+    String(minutes).padStart(2,"0")+"M : "+
+    String(seconds).padStart(2,"0")+"S";
+}
+update(); setInterval(update,1000);
+</script>
+</body>
+</html>
